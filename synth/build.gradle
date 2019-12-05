@@ -1,0 +1,25 @@
+apply plugin: 'kotlin'
+apply plugin: 'com.novoda.bintray-release'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation gradleApi()
+    compileOnly "com.android.tools.build:gradle:$GRADLE_VERSION"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$KOTLIN_VERSION"
+}
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
+
+publish {
+    userOrg = 'bboylin'      //bintray注册的用户名
+    groupId = 'xyz.bboylin'         //compile引用时的第1部分groupId
+    artifactId = 'synth'     //compile引用时的第2部分项目名
+    repoName = 'maven'
+    publishVersion = '0.0.1'    //compile引用时的第3部分版本号
+    desc = 'A tool for Android'
+    website = 'https://github.com/'
+}

@@ -1,0 +1,1 @@
+include ':app', ':synth', ':demolib'
