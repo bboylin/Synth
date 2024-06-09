@@ -20,7 +20,9 @@ class SynthClassNode(val classPath: String, val inJar: Boolean) : ClassNode(ASM6
     private val upgradedMethods = mutableSetOf<String>()
 
     override fun visitInnerClass(name: String?, outerName: String?, innerName: String?, access: Int) {
-        if (outerName != null && innerName != null && Utils.isPrivate(access)) {
+        // 回顾以前的代码的时候偶然发现这里写得不对，改之。
+        // if (outerName != null && innerName != null && Utils.isPrivate(access)) {
+        if (outerName != null && innerName != null) {
             outerClassName = outerName
             if (outerName == this.name) {
                 ClassInfo.addOuterClass(outerName, this)
